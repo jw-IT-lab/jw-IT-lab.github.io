@@ -1,0 +1,174 @@
+\documentclass[tikz,border=0pt]{standalone}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usetikzlibrary{arrows.meta,calc,positioning,backgrounds}
+
+\definecolor{textMain}{HTML}{F5EBD9}
+\definecolor{textSoft}{HTML}{D7DDD8}
+\definecolor{cyanFlow}{HTML}{6CE0E6}
+\definecolor{cyanFlowLight}{HTML}{C8F1E1}
+\definecolor{greenFlow}{HTML}{67DCAA}
+\definecolor{coralFlow}{HTML}{E58B68}
+\definecolor{coralSoft}{HTML}{F2B48A}
+\definecolor{warmMeasure}{HTML}{F3A36B}
+\definecolor{coolMeasure}{HTML}{82E0D6}
+\definecolor{blueNode}{HTML}{7BA9FF}
+\definecolor{nodeFill}{HTML}{122B35}
+\definecolor{distStroke}{HTML}{C4CCC8}
+\definecolor{distFill}{HTML}{122731}
+\definecolor{guideLine}{HTML}{E8E1D6}
+
+\begin{document}
+\begin{tikzpicture}[x=1bp,y=1bp,line cap=round,line join=round,>=Latex]
+  \path[use as bounding box] (0,0) rectangle (1200,760);
+
+  % Background
+  \begin{scope}
+    \clip[rounded corners=24] (0,0) rectangle (1200,760);
+    \node[anchor=south west, inner sep=0] at (0,0)
+      {\includegraphics[width=1200bp,height=760bp]{research-diffusion-background-tight.png}};
+  \end{scope}
+
+  % Node positions
+  \coordinate (NuXc) at (188,128);
+  \coordinate (NuYc) at (1012,128);
+  \coordinate (Mukc) at (188,640);
+  \coordinate (Muyc) at (1012,640);
+  \coordinate (Mukonec) at (188,370);
+
+  % Distribution nodes
+  \node[
+    circle,
+    minimum size=132,
+    draw=distStroke,
+    line width=1.9,
+    dashed,
+    fill=distFill,
+    fill opacity=0.54,
+    text=textMain
+  ] (NuX) at (NuXc) {};
+
+  \node[
+    circle,
+    minimum size=132,
+    draw=distStroke,
+    line width=1.9,
+    dashed,
+    fill=distFill,
+    fill opacity=0.48,
+    text=textMain
+  ] (NuY) at (NuYc) {};
+
+  % Iteration nodes
+  \node[
+    circle,
+    minimum size=126,
+    draw=cyanFlow,
+    line width=2.2,
+    fill=nodeFill,
+    fill opacity=0.74,
+    text=textMain
+  ] (Muk) at (Mukc) {\fontsize{25}{27}\selectfont $\mu_k^X$};
+
+  \node[
+    circle,
+    minimum size=126,
+    draw=greenFlow,
+    line width=2.2,
+    fill=nodeFill,
+    fill opacity=0.74,
+    text=textMain
+  ] (Muy) at (Muyc) {\fontsize{25}{27}\selectfont $\mu_k^Y$};
+
+  \node[
+    circle,
+    minimum size=124,
+    draw=blueNode,
+    line width=2.1,
+    fill=nodeFill,
+    fill opacity=0.74,
+    text=textMain
+  ] (Mukone) at (Mukonec) {\fontsize{24}{26}\selectfont $\mu_{k+1}^X$};
+
+  % Small distribution sketches inside the target nodes
+  \begin{scope}
+    \clip (NuX) circle (57);
+    \draw[textSoft, line width=3.1, opacity=0.94]
+      (146,104) .. controls (162,140) and (176,154) .. (188,154)
+      .. controls (200,154) and (214,140) .. (230,104);
+  \end{scope}
+  \begin{scope}
+    \clip (NuY) circle (57);
+    \draw[textSoft!90!cyanFlowLight, line width=3.1, opacity=0.90]
+      (970,107) .. controls (986,143) and (1000,157) .. (1012,157)
+      .. controls (1024,157) and (1038,143) .. (1054,107);
+  \end{scope}
+  \node[text=textMain] at (188,174) {\fontsize{24}{26}\selectfont $\nu^X$};
+  \node[text=textMain] at (1012,174) {\fontsize{24}{26}\selectfont $\nu^Y$};
+
+  % Main algorithmic arrows
+  \draw[
+    -{Latex[length=13,width=11]},
+    line width=4.8,
+    cyanFlow
+  ] ($(Muk.east)+(12,0)$) -- ($(Muy.west)+(-12,0)$)
+    node[midway, above=18, font=\sffamily\bfseries\fontsize{27}{29}\selectfont, text=cyanFlowLight] {1. Forward heat flow}
+    node[midway, below=15, font=\sffamily\fontsize{22}{24}\selectfont, text=cyanFlowLight] {SDPI (Exponential contraction)};
+
+  \draw[
+    -{Latex[length=13,width=11]},
+    line width=4.5,
+    coralFlow
+  ] ($(Muy.west)+(-12,-10)$) to[bend left=22]
+    node[pos=0.54, above=20, sloped, font=\sffamily\bfseries\fontsize{26}{28}\selectfont, text=coralSoft] {2. Backward heat flow}
+    node[pos=0.54, below=18, sloped, font=\sffamily\fontsize{22}{24}\selectfont, text=coralSoft] {DPI (Non-expansive)}
+    ($(Mukone.east)+(12,0)$);
+
+  % Information measures
+  \draw[
+    <->,
+    line width=1.9,
+    warmMeasure,
+    dashed,
+    dash pattern=on 6pt off 7pt
+  ] (Muk.west) to[bend right=25]
+    node[midway, left=12, font=\sffamily\fontsize{24}{26}\selectfont, text=warmMeasure] {$\mathsf{FI}_k$}
+    (NuX.west);
+
+  \draw[
+    <->,
+    line width=1.9,
+    coolMeasure,
+    dashed,
+    dash pattern=on 6pt off 7pt
+  ] ($(Muy.south)+(0,-4)$) --
+    node[midway, left=14, align=right, font=\sffamily\fontsize{24}{26}\selectfont, text=coolMeasure] {$\mathsf{FI}_k' < \mathsf{FI}_k$}
+    ($(NuY.north)+(0,6)$);
+
+  \draw[
+    <->,
+    line width=1.9,
+    greenFlow!92!coolMeasure,
+    dashed,
+    dash pattern=on 6pt off 7pt
+  ] ($(Mukone.south)+(0,-2)$) --
+    node[midway, right=14, align=left, font=\sffamily\fontsize{24}{26}\selectfont, text=greenFlow!90!coolMeasure] {$\mathsf{FI}_{k+1} \le \mathsf{FI}_k'$}
+    ($(NuX.north)+(0,8)$);
+
+  % Gaussian smoothing relation between the two target laws
+  \draw[
+    -{Latex[length=10,width=9]},
+    line width=1.7,
+    textSoft!75,
+    dashed,
+    dash pattern=on 5pt off 6pt
+  ] ($(NuX.east)+(24,4)$) -- node[midway, above=10, font=\sffamily\bfseries\fontsize{24}{26}\selectfont, text=textSoft!88] {Gaussian smoothing}
+    ($(NuY.west)+(-24,4)$);
+
+  % Auxiliary captions
+  \node[below=12 of NuX, font=\sffamily\fontsize{24}{26}\selectfont, text=textSoft] {Target law};
+  \node[below=12 of NuY, font=\sffamily\fontsize{24}{26}\selectfont, text=textSoft] {Smoothed target};
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Selected publications by Jia Wang and collaborators.">
+  <title>Jia Wang | Publications</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="publications">
+  <div class="site-background" id="canvas-nest-root" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand__name">Jia Wang</span>
+      <span class="brand__meta" data-i18n="header.affiliation"></span>
+    </a>
+
+    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav-panel">
+      <span data-i18n="header.menu"></span>
+    </button>
+
+    <div class="site-header__panel" id="site-nav-panel" data-site-nav>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a data-nav="home" href="index.html" data-i18n="nav.home"></a>
+        <a data-nav="publications" href="publications.html" data-i18n="nav.publications"></a>
+        <a data-nav="teaching" href="teaching.html" data-i18n="nav.teaching"></a>
+        <a data-nav="people" href="people.html" data-i18n="nav.people"></a>
+        <a data-nav="news" href="news.html" data-i18n="nav.news"></a>
+      </nav>
+
+      <div class="site-utilities">
+        <button class="theme-toggle" type="button" data-theme-toggle></button>
+        <button class="motion-toggle" type="button" data-motion-toggle></button>
+        <button class="lang-toggle" type="button" data-lang-toggle></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <section class="page-hero reveal">
+      <p class="eyebrow" data-i18n="publications.kicker"></p>
+      <h1 data-i18n="publications.title"></h1>
+    </section>
+
+    <section class="publication-tools reveal">
+      <div class="search-field">
+        <label class="sr-only" for="publication-search">Search publications</label>
+        <input id="publication-search" type="search" data-i18n-placeholder="publications.searchPlaceholder">
+      </div>
+      <button class="button button--spark" id="publication-surprise" type="button">
+        <span class="button__spark" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </span>
+        <span data-i18n="publications.surprise"></span>
+      </button>
+    </section>
+
+    <section class="publication-filter-panel reveal">
+      <div id="publication-filters" class="filter-row"></div>
+      <p id="publication-count" class="result-count"></p>
+    </section>
+
+    <section class="section section--tight">
+      <div id="publication-results" class="publication-results"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.note"></p>
+    <p class="site-footer__credit">
+      <span data-i18n="footer.madeByPrefix"></span><a href="https://qiudaopika.github.io/" target="_blank" rel="noreferrer" data-i18n="footer.makerName"></a><span data-i18n="footer.madeBySuffix"></span>
+      <a href="https://infotheorylab.github.io" target="_blank" rel="noreferrer" data-i18n="footer.credit"></a>
+    </p>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jia Wang at Shanghai Jiao Tong University. Information theory, optimal transport, and learning.">
+  <title>Jia Wang | Information Theory, Optimal Transport, and Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.css" integrity="sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="home">
+  <div class="site-background" id="canvas-nest-root" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand__name">Jia Wang</span>
+      <span class="brand__meta" data-i18n="header.affiliation"></span>
+    </a>
+
+    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="site-nav-panel">
+      <span data-i18n="header.menu"></span>
+    </button>
+
+    <div class="site-header__panel" id="site-nav-panel" data-site-nav>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a data-nav="home" href="index.html" data-i18n="nav.home"></a>
+        <a data-nav="publications" href="publications.html" data-i18n="nav.publications"></a>
+        <a data-nav="teaching" href="teaching.html" data-i18n="nav.teaching"></a>
+        <a data-nav="people" href="people.html" data-i18n="nav.people"></a>
+        <a data-nav="news" href="news.html" data-i18n="nav.news"></a>
+      </nav>
+
+      <div class="site-utilities">
+        <button class="theme-toggle" type="button" data-theme-toggle></button>
+        <button class="motion-toggle" type="button" data-motion-toggle></button>
+        <button class="lang-toggle" type="button" data-lang-toggle></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main site-main--home">
+    <section class="hero-editorial">
+      <figure class="hero-portrait reveal">
+        <div class="hero-portrait__frame">
+          <img src="fig/jw_young_photo_processed(1).png" alt="Portrait of Jia Wang">
+        </div>
+        <figcaption class="hero-portrait__caption">
+          <div class="hero-portrait__name">
+            <span>Jia Wang</span>
+            <span data-i18n="home.hero.nameZh"></span>
+          </div>
+          <p class="hero-portrait__title" data-i18n="home.hero.position"></p>
+          <div class="hero-contact">
+            <span class="contact-link">jiawang [at] sjtu [dot] edu [dot] cn</span>
+            <a href="tel:+862134204515">+86 21 3420 4515</a>
+          </div>
+        </figcaption>
+      </figure>
+
+      <div class="hero-editorial__copy reveal">
+        <p class="eyebrow" data-i18n="home.hero.kicker"></p>
+        <h1 class="hero-title">
+          <span data-i18n="home.hero.titleLineOne"></span>
+          <span data-i18n="home.hero.titleLineTwo"></span>
+          <span data-i18n="home.hero.titleLineThree"></span>
+        </h1>
+        <p class="hero-lede" data-i18n="home.hero.lede"></p>
+        <div id="overview-copy" class="editorial-copy"></div>
+        <div class="equation-ribbon" aria-live="polite">
+          <div class="decoder-panel">
+            <div class="decoder-panel__meta">
+              <span class="decoder-panel__name" id="decoder-source-name"></span>
+              <span class="decoder-panel__formula" id="decoder-source-formula"></span>
+            </div>
+            <div class="decoder-panel__output" id="decoder-output"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading section-heading--minimal reveal">
+        <p class="eyebrow" data-i18n="home.research.kicker"></p>
+        <h2 data-i18n="home.research.title"></h2>
+      </div>
+      <div id="research-showcase" class="research-showcase"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading section-heading--minimal reveal">
+        <p class="eyebrow" data-i18n="home.publications.kicker"></p>
+        <h2 data-i18n="home.publications.title"></h2>
+      </div>
+      <div id="home-publication-list" class="home-publication-list"></div>
+    </section>
+
+    <section class="section section--dark">
+      <div class="recruitment-band reveal">
+        <div class="recruitment-band__copy">
+          <p class="eyebrow" data-i18n="home.recruitment.kicker"></p>
+          <h2 data-i18n="home.recruitment.title"></h2>
+          <div id="recruitment-copy" class="editorial-copy editorial-copy--compact"></div>
+        </div>
+
+        <div class="recruitment-band__contact">
+          <span class="contact-link">jiawang [at] sjtu [dot] edu [dot] cn</span>
+          <a class="contact-link" href="tel:+862134204515">+86 21 3420 4515</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p data-i18n="footer.note"></p>
+    <p class="site-footer__credit">
+      <span data-i18n="footer.madeByPrefix"></span><a href="https://qiudaopika.github.io/" target="_blank" rel="noreferrer" data-i18n="footer.makerName"></a><span data-i18n="footer.madeBySuffix"></span>
+      <a href="https://infotheorylab.github.io" target="_blank" rel="noreferrer" data-i18n="footer.credit"></a>
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

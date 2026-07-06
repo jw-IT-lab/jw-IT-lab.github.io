@@ -1,0 +1,16 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="96" y1="72" x2="1098" y2="690" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#172A34"/>
+      <stop offset="0.52" stop-color="#1F434D"/>
+      <stop offset="1" stop-color="#D4845C"/>
+    </linearGradient>
+    <radialGradient id="cloud" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(802 266) rotate(132.088) scale(330 298)">
+      <stop offset="0" stop-color="#F7E8CE" stop-opacity="0.9"/>
+      <stop offset="0.55" stop-color="#C7DDD7" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#172A34" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="760" rx="22" fill="url(#bg)"/>
+  <ellipse cx="802" cy="266" rx="330" ry="298" fill="url(#cloud)"/>
+</svg>
