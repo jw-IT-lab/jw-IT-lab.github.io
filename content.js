@@ -835,7 +835,8 @@ window.SITE_CONTENT = {
           role: { en: "Ph.D. student, Year 1", zh: "\u535a\u58eb\u751f\u4e00\u5e74\u7ea7" },
           note: "",
           links: [
-            { label: { en: "GitHub", zh: "GitHub" }, url: "https://github.com/gjy0515" }
+            { label: { en: "GitHub", zh: "GitHub" }, url: "https://github.com/gjy0515" },
+            { label: { en: "Scholar", zh: "Scholar" }, url: "https://scholar.google.com/citations?user=CDNUOF0AAAAJ&hl=zh-CN" }
           ]
         }
       ]
